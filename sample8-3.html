@@ -58,12 +58,22 @@
         var texture = textureLoader.load("img/tree0.png");
         const material = new THREE.SpriteMaterial({ map: texture,});
 
+        // 板ポリ左用
+        var mat0 = new THREE.MeshLambertMaterial();
+        mat0.map = texture0;
+
         // 木左
         const sprite1 = new THREE.Sprite(material);
         sprite1.scale.set(1,2,1);
         sprite1.position.set(-1,1,0); //位置を指定
         scene.add(sprite1);
 
+        // 板ポリ左を作成
+        var geometry = new THREE.PlaneGeometry(1, 2);
+        var tree0 = new THREE.Mesh(geometry, mat0);
+        tree0.position.set(-1,1,0); //位置を指定
+        scene.add(tree0);
+        
         // 木右
         const sprite2 = new THREE.Sprite(material);
         sprite2.scale.set(1,2,1);
