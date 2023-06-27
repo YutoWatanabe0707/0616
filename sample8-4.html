@@ -6,7 +6,7 @@
   </head>
 <body>
  <h1>森を作成</h1>
- ループで２０本の気を作った<br>
+ 星空の下の謎の石<<br>
  <script>
       // ページの読み込みを待つ
       window.addEventListener('DOMContentLoaded', init);
@@ -68,7 +68,7 @@
        mat.bumpscale = 0.2;
 
         // 円柱を作成
-        var geometry3 = new THREE.CylinderGeometry( 0.2, 0.5, 0.5, 20, 20 );
+        var geometry3 = new THREE.CylinderGeometry( 0.2, 0.5, 0.5, 20, 4 );
         var Cylinder = new THREE.Mesh(geometry3, mat);
         Cylinder.position.set(0.0,0,0);
         scene.add(Cylinder);
