@@ -65,6 +65,16 @@
        cylinder.position.set( 0, 1, 0 );
        scene.add( cylinder );
         
+        // テクスチャー読み込み
+       var textureLoader = new THREE.TextureLoader();
+       var texture = textureLoader.load("stone.jpg");
+       var mat = new THREE.MeshPhongMaterial();
+       mat.map = texture;
+       // バンプマップ読み込み
+       var bump = textureLoader.load("stone-bump.jpg");
+       mat.bumpMap = bump;
+       mat.bumpscale = 0.2;
+        
         // 森を作成
         for (let i = 0; i < 20; i++) {
           const sprite = new THREE.Sprite(material);
