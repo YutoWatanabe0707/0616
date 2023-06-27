@@ -68,13 +68,13 @@
        mat.bumpscale = 0.2;
 
         // 円柱を作成
-        var geometry3 = new THREE.CylinderGeometry( 0.2, 0.5, 0.5, 20, 4 );
+        var geometry3 = new THREE.CylinderGeometry( 0.2, 0.5, 0.5, 20, 20 );
         var Cylinder = new THREE.Mesh(geometry3, mat);
         Cylinder.position.set(0.0,0,0);
         scene.add(Cylinder);
         
         // 森を作成
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 10; i++) {
           const sprite = new THREE.Sprite(material);
           // ランダムな座標に配置
           sprite.position.x = 2 * (Math.random() - 0.5);
