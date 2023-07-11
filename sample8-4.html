@@ -52,6 +52,12 @@
         const axisHelper = new THREE.AxisHelper(2); //軸の長さ　X：赤、Y：緑、z：青
         scene.add(axisHelper);
 
+        // texture作成
+        var textureLoader = new THREE.TextureLoader();
+        var suntexture = textureLoader.load("img/sun.png");
+        var startexture = textureLoader.load("img/star.png");
+
+
         // 平面を作成
         var planeGeometry = new THREE.PlaneGeometry(5,5,10,10); //縦、横、分割数、分割数
         var planeMaterial = new THREE.MeshBasicMaterial({color: 0x00ff00});
@@ -59,27 +65,53 @@
         plane.rotation.set( -Math.PI/2, 0, 0 );
         plane.position.set(0,0,0);
         scene.add(plane);
-        
+
+        // starグループ
+        var stargroup = new THREE.Group();
+        scene.add(stargroup);
+
+        var stargeometry = new THREE.PlaneGeometry(150,120);
+        var starmat = new THREE.MeshBasicMaterial({transparent:true});
+        starmat.map= startexture;
+
+        var star1plane = new THREE.Mesh( stargeometry, starmat );
+        star1plane.position.set(250, 0, 0);
+        star1plane.rotation.y = 1.5708;
+        stargroup.add( star1plane );
+
+        var star2plane = new THREE.Mesh( stargeometry, starmat );
+        star2plane.position.set(-250, 0, 0);
+        star2plane.rotation.y = 1.5708;
+        stargroup.add( star2plane );
+
+        var star3plane = new THREE.Mesh( stargeometry, starmat );
+        star3plane.position.set(0, 0, 250);
+        stargroup.add( star3plane );
+
+        var star4plane = new THREE.Mesh( stargeometry, starmat );
+        star4plane.position.set(0, 0, -250);
+        stargroup.add( star4plane );
+     
         // 木をスプライトで作成
-        var textureLoader = new THREE.TextureLoader();  
-        var texture = textureLoader.load("img/star.png");
-        const material = new THREE.SpriteMaterial({ map: texture,});
+        //var textureLoader = new THREE.TextureLoader();  
+        //var texture = textureLoader.load("img/star.png");
+        //const material = new THREE.SpriteMaterial({ map: texture,});
         
         // テクスチャー読み込み
-       var textureLoader = new THREE.TextureLoader();
-       var texture = textureLoader.load("stone.jpg");
-       var mat = new THREE.MeshPhongMaterial();
-       mat.map = texture;
+       //var textureLoader = new THREE.TextureLoader();
+       //var texture = textureLoader.load("stone.jpg");
+       //var mat = new THREE.MeshPhongMaterial();
+       //mat.map = texture;
        // バンプマップ読み込み
-       var bump = textureLoader.load("stone-bump.jpg");
-       mat.bumpMap = bump;
-       mat.bumpscale = 0.2;
+      // var bump = textureLoader.load("stone-bump.jpg");
+     //  mat.bumpMap = bump;
+      // mat.bumpscale = 0.2;
 
         // 円柱を作成
-        var geometry3 = new THREE.CylinderGeometry( 0.2, 0.5, 0.5, 20, 4 );
-        var Cylinder = new THREE.Mesh(geometry3, mat);
-        Cylinder.position.set(0.0,0,0);
-        scene.add(Cylinder);
+        //var geometry3 = new THREE.CylinderGeometry( 0.2, 0.5, 0.5, 20, 4 );
+        //var Cylinder = new THREE.Mesh(geometry3, mat);
+       // Cylinder.position.set(0.0,0,0);
+        //scene.add(Cylinder);
         
         // 森を作成
         for (let i = 0; i < 10; i++) {
